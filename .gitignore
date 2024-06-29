@@ -1,2 +1,9 @@
 .env
 .pem
+.venv
+.vscode
+.mypy_cache
+*.sqlite3
+__pycache__
+*.log
+celerybeat-schedule

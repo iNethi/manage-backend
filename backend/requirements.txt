@@ -14,10 +14,9 @@ cytoolz==0.12.3
 deprecation==2.1.0
 Django==5.0
 django-cors-headers==4.3.1
-django-keycloak-auth==0.9.9
-django-uw-keycloak==2.0.2
 djangorestframework==3.14.0
 dry-rest-permissions==0.1.10
+django-keycloak-admin==0.0.1
 ecdsa==0.18.0
 eth-account==0.11.2
 eth-hash==0.7.0
@@ -46,7 +45,7 @@ pycryptodome==3.20.0
 PyJWT==2.8.0
 python-dotenv==1.0.1
 python-jose==3.3.0
-python-keycloak==3.9.1
+python-keycloak==4.0.0
 pytz==2023.3.post1
 pyunormalize==15.1.0
 PyYAML==6.0.1

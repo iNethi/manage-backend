@@ -7,7 +7,7 @@ from .utilities import update_prometheus_targets, remove_prometheus_targets
 import json
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser
 
 
 class AddDevice(APIView):

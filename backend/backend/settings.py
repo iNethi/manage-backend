@@ -52,9 +52,27 @@ INSTALLED_APPS = [
     'payments',
     'rest_framework',
     'corsheaders',
+    'django_keycloak',
     'wallet'
 ]
-
+# Keycloak config
+AUTHENTICATION_BACKENDS = ["django_keycloak.backends.KeycloakAuthorizationCodeBackend"]
+LOGIN_URL = "keycloak_login"
+AUTH_USER_MODEL = "django_keycloak.KeycloakUser"
+KEYCLOAK_CLIENTS = {
+    "DEFAULT": {
+        "URL": os.environ["KEYCLOAK_URL"],
+        "REALM": os.environ["KEYCLOAK_REALM"],
+        "CLIENT_ID": os.environ["KEYCLOAK_CLIENT_ID"],
+        "CLIENT_SECRET": os.environ["KEYCLOAK_CLIENT_SECRET"]
+    },
+    "API": {
+        "URL": os.environ["KEYCLOAK_URL"],
+        "REALM": os.environ["KEYCLOAK_REALM"],
+        "CLIENT_ID": os.environ["DRF_KEYCLOAK_CLIENT_ID"],
+        "CLIENT_SECRET": None  # DRF client is public
+    }
+}
 
 
 MIDDLEWARE = [
@@ -127,10 +145,6 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
-
-KEYCLOAK_PUBLIC_KEY_NAME = os.getenv('KEYCLOAK_PUBLIC_KEY_NAME')
-with open(os.path.join(BASE_DIR, 'keys', KEYCLOAK_PUBLIC_KEY_NAME), 'r') as file:
-    KEYCLOAK_PUBLIC_KEY = file.read()
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

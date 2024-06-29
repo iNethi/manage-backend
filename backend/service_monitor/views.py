@@ -2,11 +2,11 @@ from collections import defaultdict
 
 from django.shortcuts import render
 from rest_framework.views import APIView, Response
+from rest_framework.permissions import IsAdminUser
 from rest_framework import status
 from .models import Service
 from django.db import IntegrityError
 from django.core.exceptions import ValidationError
-from ap_monitor.permissions import IsAdminUser
 
 
 class ListServices(APIView):

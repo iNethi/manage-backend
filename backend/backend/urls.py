@@ -15,13 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from ap_monitor.views import ListDevices, DeleteDevice, UpdateDevices, AddDevice
 from service_monitor.views import ListServices, AddService, DeleteService, EditService, ListServicesByType
 from wallet.views import CreateWallet, SendToken, CheckBalance
 from users.views import UserKeycloakAttributes, RegisterKeycloakUser
 
 urlpatterns = [
+    # This will override the default login url
+    path('admin/', include("django_keycloak.urls")),
     path('admin/', admin.site.urls),
 
     # ap_monitor
